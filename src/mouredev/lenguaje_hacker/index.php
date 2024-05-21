@@ -37,6 +37,21 @@ define('LEET_DIC', [
   'z' => '2',
 ]);
 
+/**
+ * Convert the text passed as leet lang
+ * How it works?
+ *  First, as the LEET_DIC constant is an associative array where the key 
+ *  is the letter and the value es the equivalence, but the keys are in
+ *  lowercase, and we need to duplicate the array but with the keys in
+ *  upper case, using the array_keys with the array_map it apply the
+ *  function strtoupper to each key, and with array_values, it returns
+ *  just the values without its keys, with the function array_combine, it
+ *  join the keys and de values, finally it use the function str_replace
+ *  to replace each carater in the text passed as paramteter.
+ *
+ * @param string $text
+ * @return string
+ */
 function translateToLeet(string $text): string {
   $leet_dic = array_combine(
     array_map('strtoupper', array_keys(LEET_DIC)),
